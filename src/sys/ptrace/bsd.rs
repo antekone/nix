@@ -162,7 +162,7 @@ pub fn step<T: Into<Option<Signal>>>(pid: Pid, sig: T) -> Result<()> {
         None => 0,
     };
     unsafe {
-        ptrace_other(Request::PT_STEP, pid, ptr::null_mut(), data).map(drop)
+        ptrace_other(Request::PT_STEP, pid, 1 as AddressType, data).map(drop)
     }
 }
 
